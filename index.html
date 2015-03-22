@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,3 +12,24 @@
 </body>
 
 </html>
+=======
+---
+layout: default
+title: 我的Blog
+---
+<div id="intro">
+<img src="images/portrait.jpg" alt="" />
+<p id="head">Hi,I'm <span>Mengying Fan</span></p>
+</div>
+<div id="blog">
+<ul>
+{% for post in site.posts %}
+<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+{% endfor %}
+</ul>
+</div>
+
+<div id="contact">
+
+</div>
+>>>>>>> 70af30a8934b77c0e2b64cb3d03b6dbfbdac2305
