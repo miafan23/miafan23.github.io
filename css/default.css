@@ -1,0 +1,78 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 1.05em
+}
+
+
+ul {
+    list-style: none;
+}
+
+.transparent-overlay {
+    opacity: 0.6;
+    transition: all .4s;
+    -moz-transition: all .4s; /* Firefox 4 */
+    -webkit-transition: all .4s; /* Safari 和 Chrome */
+    -o-transition: all .4s; /* Opera */
+}
+
+.transparent-overlay:hover {
+    opacity: 1;
+}
+.icon-small {
+    width: 32px;
+    height: 32px;
+    background-image: url("../img/social.png");
+    background-size: 160px 60px;
+    display: inline-block;
+    border-bottom: none;
+    transition: all .6s;
+    -moz-transition: all .6s; /* Firefox 4 */
+    -webkit-transition: all .6s; /* Safari 和 Chrome */
+    -o-transition: all .6s; /* Opera */
+    color: transparent;
+}
+.icon-twitter {
+    background-position: 0 0
+}
+
+.icon-facebook {
+    background-position: -32px 0
+}
+
+.icon-google {
+    background-position: -64px 0
+}
+
+.icon-linkedin {
+    background-position: -96px 0
+}
+
+.icon-weibo {
+    background-position: -128px 0
+}
+
+.icon-digg {
+    background-position: 0 32px
+}
+
+.icon-douban {
+    background-position: -32px 30px
+}
+
+.icon-reddit {
+    background-position: -64px 32px
+}
+
+.icon-stumble {
+    background-position: -96px 32px
+}
+
+.icon-github {
+    background-position: -128px 32px
+}
