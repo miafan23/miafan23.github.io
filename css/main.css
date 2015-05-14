@@ -1,0 +1,81 @@
+body,html{
+    font-family: '华文细黑'
+}
+ul {
+    margin: 0;
+    padding: 0;
+}
+canvas {
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+}
+#home-page{
+    width: 100%;
+    display: none;
+    opacity: 0;
+    overflow: hidden;
+}
+#intro {
+    width: 50%;
+    float: left;
+    text-align: center;
+    
+}
+#main-white {
+    width: 100%;
+    display: table;
+}
+#intro section {
+    width: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    height: 100vh;
+}
+section > h1 {
+    font-size: 80px;
+    margin:0 0 60px 0;
+    font-weight: lighter;
+}
+
+#navigation {
+    padding: 0;
+}
+#navigation > li {
+    display: inline-block;
+    margin: 20px;
+}
+
+#navigation li img {
+    width: 20px;
+}
+
+#images {
+    width: 50%;
+    min-width: 490px;
+    height: calc(100vh + 200px);
+    float: left;
+    overflow: hidden;
+}
+
+    #images img {
+        width: 100%;
+    }
+
+footer {
+    height: 200px;
+    background: #232323;
+    text-align: center;
+}
+    #link {
+        padding-top: 30px;
+    }
+    #link > p {
+        display: inline-block;
+        margin: 0 10px;
+    }
+
