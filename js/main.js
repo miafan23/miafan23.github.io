@@ -51,13 +51,13 @@ var init = {
         var welcome = document.getElementById(defaults.welcome);
         var timer = setTimeout(function () {
             fadeOut(welcome, 50)
-        }, 10)
+        }, 1000)
     },
     showMain: function () {
         var main = document.getElementById(defaults.main);
         var timer = setTimeout(function () {
             fadeIn(main, 30)
-        }, 20)
+        }, 4000)
     },
     setStyle: function () {
 
@@ -76,48 +76,26 @@ $.mouseWheel('body', function (delta) {
         scrollInertia(0)
     };
 })
+$.mouseWheel('body', function (delta, target) {
+    imageScroll.onMouseWheel(100, delta/120)
+})
 function scrollInertia (target) {
-    var speed;
-    clearInterval(timerBodyScroll)
+    var speed = 0;
+    var nowScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    clearInterval(timerBodyScroll);
     timerBodyScroll = setInterval(function () {
-        if ($('body').scrollTop == target) {
+        if (nowScrollTop == target) {
                 clearInterval(timerBodyScroll);
             } else {
-                speed = (target-$('body').scrollTop)/20;
+                speed = (target-nowScrollTop)/50;
                 speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed)
-                $('body').scrollTop += speed;
+                nowScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                nowScrollTop += speed;
+                document.documentElement.scrollTop = nowScrollTop;
+                document.body.scrollTop = nowScrollTop;
             }
-        },5)
+        },1)
 }
-var timerImages;
-var top;
-$.mouseWheel('#images', function (delta, target) {
-    // var speed = 1;
-    // var moveDis = 0;
-    // var wrapper = document.getElementById(defaults.imagesWrapper)
-    // top = parseInt(window.getComputedStyle(wrapper, null).getPropertyValue('top'));
-    // clearInterval(timerImages)
-    // if (delta<0) {
-    //     //target.style.transform = 'translate3d('+50+'px, 0, 0)';
-    //     console.log(delta)
-    //     timerImages = setInterval(function () {
-    //         if (moveDis == 100*(delta/-120)) {
-    //             clearInterval(timerImages)
-    //         } else {
-    //             moveDis += 1;
-    //             wrapper.style.top = top - moveDis + 'px';
-    //         }
-    //     }, 5)
-        
-    // }
-    // else if (delta > 0) {
-    //     top += 200;
-    //     wrapper.style.top = top + 'px';
-    // };
-    
-    imageScroll.onMouseWheel(100, delta/120)
-    
-})
 
 var ImageScroll = function (parent, children, distance) {
     var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
@@ -125,75 +103,75 @@ var ImageScroll = function (parent, children, distance) {
     var _this = this;
     this.dis = distance[0];
     this.stopped = true;
-    this.parentHeight = parent.offsetHeight;
-
-    this.id = 0;
+    this.timer = 0;
     this.yPosition = 0;
     var _enterYp = 0;
 
     this.onEnterframe = function() {
-        //_enterYp += (_this.yPosition - parseInt($(parent).css("top"))) / _s;
-        _enterYp = _this.yPosition
+        var top = window.getComputedStyle(parent, null).getPropertyValue("top")
+        _enterYp += (_this.yPosition - parseInt(top)) / 30;
         parent.style.top = parseInt(_enterYp) + "px";
-        console.log(parent.style.top)
-        //_this.id = requestAnimationFrame(_this.onEnterframe);
+        setTimeout(_this.onEnterframe, 1);
     }
 
     return {
+        start: function() {
+            if (_this.stopped) {
+                _this.timer = setTimeout(_this.onEnterframe, 1);
+                _this.stopped = false;
+            }
+        },
         onMouseWheel: function (distance, direction) {
             var top = parseInt(parent.style.top);
+            //滚动一次移动的距离
             var moveDistance = 0;
             var n = 0;
             var childHeight = 0;
             var child;
-            var _enterYp = 0;
-
+            _this.parentHeight = parent.offsetHeight
             if (!_this.stopped) {
                 moveDistance = distance*parseInt(direction);
-                //n = _this.yPosition + moveDistance;
-                //if (direction < 0 && n < clientHeight - _this.parentHeight) {
-                // if (direction < 0) {
-                //     console.log(_this.parentHeight)
-                //     //while (n < clientHeight - _this.parentHeight + moveDistance) {
-                //     while(n<0){
-                //         child = children[0];
-                //         childHeight = child.offsetHeight;
-                //         parent.appendChild(child);
-                //         _this.yPosition = _this.yPosition + childHeight - moveDistance;
-                //         _enterYp += childHeight;
-                //         parent.style.top = _enterYp + "px";
-                //         n = _this.yPosition;
-                //     }
-                // }
-
-                 //if (direction>0) {
-                    // var childrenLength = children.length;
-                    // while (n > 0) {
-                    //     child = children[childrenLength - 1] || children[0];
-                    //     childHeight = child.offsetHeight;
-                    //     parent.insertBefore(child, children[0]);
-                    //     _this.yPosition = _this.yPosition - childHeight + moveDistance;
-                    //     _enterYp -= childHeight;
-                    //     parent.style.top = _enterYp + "px";
-                    //     n = _this.yPosition;
-                    // }
-                //} else {
-                    _this.yPosition += moveDistance;
-                    console.log(_this.yPosition);
-                    _this.id = requestAnimationFrame(_this.onEnterframe);
-                //}
-            };
-        },
-
-        start: function() {
-            if (_this.stopped) {
-                _this.id = requestAnimationFrame(_this.onEnterframe);
-                _this.stopped = false;
+                n = _this.yPosition + moveDistance;
+                //如果向下滚到底了
+                if (direction < 0 && n < clientHeight - _this.parentHeight) {
+                    while (n < clientHeight - _this.parentHeight + moveDistance) {
+                        child = children[0];
+                        childHeight = child.offsetHeight;
+                        //将第一张图片放到最后
+                        parent.appendChild(child);
+                        _this.yPosition = _this.yPosition + childHeight - moveDistance;
+                        //瞬间改变top值
+                        _enterYp += childHeight;
+                        parent.style.top = _enterYp + "px";
+                        n = _this.yPosition;
+                    }
+                }
+                //如果向上滚到顶了
+                 if (n > 0) {
+                    var childrenLength = children.length;
+                    while (n > 0) {
+                        child = children[childrenLength - 1];
+                        childHeight = child.offsetHeight;
+                        //将最后一张图片放在第一张图片前面
+                        parent.insertBefore(child, children[0]);
+                        _this.yPosition = _this.yPosition - childHeight + moveDistance;
+                        _enterYp -= childHeight;
+                        parent.style.top = _enterYp + "px";
+                        n = _this.yPosition;
+                    }
+                } else {
+                    _this.yPosition += moveDistance;    
+                }
             }
+        },
+        stop: function() {
+            _this.stopped = true;
+            clearTimeout(_this.timer);
         }
     }
 }
 var imageScroll = new ImageScroll($('#'+defaults.imagesWrapper), $('#'+defaults.imagesWrapper).getElementsByTagName('li'), [100]);
+//开定时器
 imageScroll.start();
 $.on('#about', 'click', function () {
     var about = $('#about-content')

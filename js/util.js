@@ -326,6 +326,7 @@ $.mouseWheel = function (selector, listener) {
         var e = event || window.event;
         target = e.srcElement? e.srcElement : e.target;
         e.preventDefault();
+        e.stopPropagation();
         var delta;
         if (e.wheelDelta) {
             delta = e.wheelDelta;

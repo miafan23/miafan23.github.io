@@ -95,10 +95,6 @@ section > h1 {
     position: relative;
     top: 0;
     z-index: 1;
-    transition: all 1s;
-    -moz-transition: all 1s;
-    -webkit-transition: all 1s;
-    -o-transition: all 1s;
 }
     #images li {
         position: relative;
@@ -108,10 +104,6 @@ section > h1 {
         width: 120%;
         position: absolute;
         left: -10%;
-        transition: all 1s;
-        -moz-transition: all 1s;
-        -webkit-transition: all 1s;
-        -o-transition: all 1s;
     }
 
     @media (max-width: 980px) {
