@@ -100,18 +100,16 @@ section > h1.title {
 }
     #images li {
         position: relative;
-        height: 1200px;
+        width: 100%;
     }
     #images img {
-        /*width: 120%;
-        position: absolute;
-        left: -10%;*/
         width: 100%;
+        vertical-align:top;
     }
 
     #images p {
         position: absolute;
-        top: 40%;
+        top: 30%;
         left: 50%;
         font-size: 4rem;
         color: #fff;

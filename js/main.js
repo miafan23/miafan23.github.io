@@ -100,7 +100,7 @@ function scrollInertia (target) {
 var ImageScroll = function (parent, children, distance) {
     var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
     var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
-    
+
     var _this = this;
     this.dis = distance[0];
     this.stopped = true;
@@ -134,9 +134,8 @@ var ImageScroll = function (parent, children, distance) {
                 moveDistance = distance*parseInt(direction);
                 n = _this.yPosition + moveDistance;
                 //如果向下滚到底了
-                //+100是为了保险
-                if (direction < 0 && n < document.documentElement.scrollHeight+100 - _this.parentHeight) {
-                    while (n < document.documentElement.scrollHeight+100 - _this.parentHeight + moveDistance) {
+                if (direction < 0 && n < document.documentElement.scrollHeight - _this.parentHeight) {
+                    while (n < document.documentElement.scrollHeight - _this.parentHeight) {
                         child = children[0];
                         childHeight = child.offsetHeight;
                         //将第一张图片放到最后
