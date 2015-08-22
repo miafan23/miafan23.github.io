@@ -1,79 +1,148 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: '华文细黑','Microsoft Yahei';
+* {
+  box-sizing: border-box;
+  font-family: 'Microsoft Jhenghei', 'Microsoft Yahei';
 }
-
+html {
+  font-size: 62.5%;
+}
 body {
-    font-size: 1.05em
+  font-size: 1.6rem;
+  color: #464646;
 }
-
-
+body::selection,
+body::-moz-selection {
+  background-color: #428445;
+  color: #fff;
+}
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 1.9rem;
+}
 ul {
-    list-style: none;
+  list-style: none;
 }
-
+a {
+  outline: none;
+  text-decoration: none;
+}
+p {
+  line-height: 170%;
+  font-size: 1.6rem;
+}
+code {
+  background-color: #f7f7f7;
+  padding: 2px 5px 0 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 85%;
+}
+.highlight {
+  background-color: #f7f7f7;
+  padding: 16px 16px;
+}
+.highlight > pre {
+  padding: 0;
+  margin: 0;
+}
+.highlight code {
+  border: none;
+  padding: 0;
+}
+.highlight .c {
+  color: #999988;
+}
+.highlight .kd {
+  color: #428445;
+  font-weight: bold;
+}
+.highlight .k {
+  color: #428445;
+  font-weight: bold;
+}
 .transparent-overlay {
-    opacity: 0.6;
-    transition: all .4s;
-    -moz-transition: all .4s; /* Firefox 4 */
-    -webkit-transition: all .4s; /* Safari 和 Chrome */
-    -o-transition: all .4s; /* Opera */
+  opacity: 0.6;
+  transition: all .4s;
+  -moz-transition: all .4s;
+  /* Firefox 4 */
+  -webkit-transition: all .4s;
+  /* Safari 和 Chrome */
+  -o-transition: all .4s;
+  /* Opera */
 }
-
 .transparent-overlay:hover {
-    opacity: 1;
+  opacity: 1;
 }
 .icon-small {
-    width: 32px;
-    height: 32px;
-    background-image: url("../img/social.png");
-    background-size: 160px 60px;
-    display: inline-block;
-    border-bottom: none;
-    transition: all .6s;
-    -moz-transition: all .6s; /* Firefox 4 */
-    -webkit-transition: all .6s; /* Safari 和 Chrome */
-    -o-transition: all .6s; /* Opera */
-    color: transparent;
+  width: 32px;
+  height: 32px;
+  background-image: url("../img/social.png");
+  background-size: 160px 60px;
+  display: inline-block;
+  border-bottom: none;
+  transition: all .6s;
+  -moz-transition: all .6s;
+  /* Firefox 4 */
+  -webkit-transition: all .6s;
+  /* Safari 和 Chrome */
+  -o-transition: all .6s;
+  /* Opera */
+  color: transparent;
 }
 .icon-twitter {
-    background-position: 0 0
+  background-position: 0 0;
 }
-
 .icon-facebook {
-    background-position: -32px 0
+  background-position: -32px 0;
 }
-
 .icon-google {
-    background-position: -64px 0
+  background-position: -64px 0;
 }
-
 .icon-linkedin {
-    background-position: -96px 0
+  background-position: -96px 0;
 }
-
 .icon-weibo {
-    background-position: -128px 0
+  background-position: -128px 0;
 }
-
 .icon-digg {
-    background-position: 0 32px
+  background-position: 0 32px;
 }
-
 .icon-douban {
-    background-position: -32px 30px
+  background-position: -32px 30px;
 }
-
 .icon-reddit {
-    background-position: -64px 32px
+  background-position: -64px 32px;
 }
-
 .icon-stumble {
-    background-position: -96px 32px
+  background-position: -96px 32px;
+}
+.icon-github {
+  background-position: -128px 32px;
+}
+.info {
+  font-size: 1.2rem;
+  color: #999;
 }
 
-.icon-github {
-    background-position: -128px 32px
+/*header*/
+header {
+  width: 100%;
+  min-width: 980px;
+  height: 50px;
+  line-height: 50px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.04), 0 10px 10px rgba(0, 0, 0, 0.03), 0 1px 0 rgba(0, 0, 0, 0.05);
 }
+nav {
+  float: right;
+}
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+nav ul > li {
+  display: inline-block;
+  padding: 0 20px;
+}
+/*header end*/

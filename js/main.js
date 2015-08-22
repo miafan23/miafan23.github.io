@@ -100,6 +100,7 @@ function scrollInertia (target) {
 var ImageScroll = function (parent, children, distance) {
     var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
     var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+    
     var _this = this;
     this.dis = distance[0];
     this.stopped = true;
@@ -133,8 +134,9 @@ var ImageScroll = function (parent, children, distance) {
                 moveDistance = distance*parseInt(direction);
                 n = _this.yPosition + moveDistance;
                 //如果向下滚到底了
-                if (direction < 0 && n < clientHeight - _this.parentHeight) {
-                    while (n < clientHeight - _this.parentHeight + moveDistance) {
+                //+100是为了保险
+                if (direction < 0 && n < document.documentElement.scrollHeight+100 - _this.parentHeight) {
+                    while (n < document.documentElement.scrollHeight+100 - _this.parentHeight + moveDistance) {
                         child = children[0];
                         childHeight = child.offsetHeight;
                         //将第一张图片放到最后
@@ -170,7 +172,7 @@ var ImageScroll = function (parent, children, distance) {
         }
     }
 }
-var imageScroll = new ImageScroll($('#'+defaults.imagesWrapper), $('#'+defaults.imagesWrapper).getElementsByTagName('li'), [100]);
+var imageScroll = new ImageScroll($('#'+defaults.imagesWrapper)[0], $('#'+defaults.imagesWrapper)[0].getElementsByTagName('li'), [100]);
 //开定时器
 imageScroll.start();
 $.on('#about', 'click', function () {
@@ -186,4 +188,3 @@ $.on('#about', 'click', function () {
 })
 
 })();
-
