@@ -23,9 +23,30 @@ h2 {
 ul {
   list-style: none;
 }
+
 a {
   outline: none;
   text-decoration: none;
+  -webkit-transition: color 0.6s;
+  -moz-transition: color 0.6s;
+  -ms-transition: color 0.6s;
+  -o-transition: color 0.6s;
+  transition: color 0.6s;
+}
+a:link,
+a:visited {
+  color: #464646;
+}
+a:hover {
+  color: #428445;
+}
+a.inline-link:link, a.inline-link:visited {
+  color: #428445;
+  font-weight: bold;
+}
+a.inline-link:hover {
+  color: #464646;
+  font-weight: bold;
 }
 p {
   line-height: 170%;
@@ -144,5 +165,11 @@ nav ul {
 nav ul > li {
   display: inline-block;
   padding: 0 20px;
+}
+
+header img {
+  height: 40px;
+  width: 40px;
+  margin: 8px 0 0 10px;
 }
 /*header end*/
