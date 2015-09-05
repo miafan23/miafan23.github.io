@@ -174,16 +174,5 @@ var ImageScroll = function (parent, children, distance) {
 var imageScroll = new ImageScroll($('#'+defaults.imagesWrapper)[0], $('#'+defaults.imagesWrapper)[0].getElementsByTagName('li'), [100]);
 //开定时器
 imageScroll.start();
-$.on('#about', 'click', function () {
-    var about = $('#about-content')
-    var width = parseInt(window.getComputedStyle(about, null).getPropertyValue('width'));
-    if (width === 0) {
-        about.style.width = '100%';
-        //$('#about').style['border-top'] = '1px solid #232323'
-    } else {
-        about.style.width = '0';
-        //$('#about').style['border-top'] = '1px solid #fff'
-    }
-})
 
 })();
