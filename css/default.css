@@ -27,6 +27,7 @@ ul {
 a {
   outline: none;
   text-decoration: none;
+  /*font-weight: bolder;*/
   -webkit-transition: color 0.6s;
   -moz-transition: color 0.6s;
   -ms-transition: color 0.6s;
@@ -38,11 +39,11 @@ a:visited {
   color: #464646;
 }
 a:hover {
-  color: #428445;
+  color: #d95e45;
 }
 a.inline-link:link, a.inline-link:visited {
-  color: #428445;
-  font-weight: bold;
+  color: #d95e45;
+  font-weight: bolder;
 }
 a.inline-link:hover {
   color: #464646;
@@ -149,7 +150,7 @@ code {
 /*header*/
 header {
   width: 100%;
-  min-width: 980px;
+  /*min-width: 980px;*/
   height: 50px;
   line-height: 50px;
   background: rgba(255, 255, 255, 0.9);
